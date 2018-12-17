@@ -40,3 +40,4 @@ getLetter.letterguess(guess)
 // getLetter.guessConfirm(guess)
 console.log(getLetter);
 
+module.exports = Letter;

@@ -1,16 +1,27 @@
+var Letter = require("./letter.js");
+
+let word = "mouse";
+
 ///Contains a constructor, Word that depends on the Letter constructor. This is used to create an object representing the current word the user is attempting to guess. That means the constructor should define:
 
 //An array of `new` Letter objects representing the letters of the underlying word
 let Word = function (){
-underlyingLett = []
+this.underlyingLett = []
+for (var i = 0; i < word.length; i++) {
+    this.underlyingLett[i] = "_";
+}
+console.log (" I am the array" + this.underlyingLett);
     //A function that returns a string representing the word. This should call the function on each letter object (the first function defined in `Letter.js`) that displays the character or an underscore and concatenate those together.
-this.wordString = function (){
 
- 
+    this.addLetter = function(word) {
+        this.underlyingLett.push(new Letter(word));
+    };
   };
 
-}
-   
+  var firstClass = new Word();
+
+  firstClass.addLetter(word);
+  console.log(firstClass);
   
 
 
