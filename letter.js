@@ -1,38 +1,42 @@
 let guess = process.argv[2];
 //This constructor should be able to either display an underlying character or a blank placeholder (such as an underscore), depending on whether or not the user has guessed the letter
-let letter = function (character, guessed){
+var Letter = function (character){
 //A string value to store the underlying character for the letter
 
-this.character = a
+this.character = character;
 
 //A boolean value that stores whether that letter has been guessed yet
 
-this.guessed = false
+this.guessed = false;
 
 //A function that returns the underlying character if the letter has been guessed, or a placeholder (like an underscore) if the letter has not been guessed
 
-this.letterguess = function(){
+this.letterguess = function(guess){
     if(this.character === guess){
-        return this.character
+        // return this.character;
+        console.log (`you have correctly guessed ${this.character}`)
+
     } else{
-        return "_"
+        this.character = "_";
+        console.log ("I am the character now " + this.character)
     }
 
 //A function that takes a character as an argument and checks it against the underlying character, updating the stored boolean value to true if it was guessed correctly
-this.guessConfirm = function (guess){
+this.guessConfirm = function(){
 
     if (this.character === guess){
-        this.guessed = true
+        this.guessed = true;
+        console.log(`your guess was ${this.guessed}`)
     }
 }
 
 }
 
-
-
-guess.letterguess();
-console.log (guess)
-
-
-
 }
+
+var getLetter = new Letter("a");   
+
+getLetter.letterguess(guess)
+// getLetter.guessConfirm(guess)
+console.log(getLetter);
+
