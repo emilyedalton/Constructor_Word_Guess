@@ -24,7 +24,7 @@ var Letter = function (character, guessed) {
     }
     //A function that takes a character as an argument and checks it against the underlying character, updating the stored boolean value to true if it was guessed correctly
     this.guessConfirm = function (guess) {
-        {
+        
             if (guess.toLowerCase() === this.character.toLowerCase()) {
                 this.guessed = true;
                 return true;
@@ -36,14 +36,14 @@ var Letter = function (character, guessed) {
             }
         }
     }
-}
+
 
 var getLetter = new Letter("a", "a");
 console.log(getLetter.letterguess("a"));
-// var getLetter = new Letter("a");   
+var getLetter = new Letter("a");   
 
 // getLetter.letterguess(guess);
-// getLetter.guessConfirm(guess)
+getLetter.guessConfirm("b")
 // console.log(getLetter);
 
 module.exports = Letter;

@@ -1,13 +1,17 @@
 var Letter = require("./letter.js");
+var guess = process.argv[2];
+// let currentWord = "horse";
 
-let currentWord = process.argv[2];
 
 ///Contains a constructor, Word that depends on the Letter constructor.
 //This constructor is used to create an object representing the current word the user is attempting to guess. This word will be produed by the index file. 
 
 var Word = function(currentWord){
 this.currentWord = currentWord;
+
 this.underlyingLett = [];
+
+
 // this is the method that creates the word to guess out of letters split from the current word. Calling the letterguess function
 this.wordtoGuess = function (){
   console.log(currentWord);
@@ -18,20 +22,47 @@ for (let i = 0; i < splitWord.length; i++){
   console.log("this is the current letter" + currentLet.letterguess());
  this.underlyingLett.push(currentLet.letterguess());
 }
+
+
+ }
+//----end wordtoGuess method----
+
+
+//initialize board takes a letter from the underlyingLett array and transforms it into an underscore
+  this.initializeboard = function (){
+    console.log()
+    for (let i = 0; i < this.currentWord.length; i++) {
+      this.underlyingLett[i] = "_ ";
+   }
+}
+//----end initializeboard method----
+
+// displayboard takes all of the underlying letters that have been transformed and joins them
 this.displayboard = function(){
-  console.log("is this workign" + " " + this.underlyingLett);
+  
+  console.log("This is the underlying letter array" +" "+ this.underlyingLett.join(""));
+}
+//----end displayboard method----
+//userguess iterates through the current word letter and run the guess confirm method on it, then update the display
+this.userGuess = function(guess) {
+  for (let i = 0; i < this.currentWord.length; i++) {
+    let currentLet = this.currentWord[i];
+    console.log (`I am part of the userGuess function ${currentLet}`)
+    // guessConfirm(currentLet);
+  }
+}
+//----end userguess method----
+}
+//----end Word object----
 
 
-}
-}
-}
-// return underlyingLett;
-
-var getWord = new Word("Developer");
-getWord.wordtoGuess();
+var getWord = new Word("Cat");
+getWord.initializeboard();
+// getWord.wordtoGuess();
 getWord.displayboard();
-var getLetter = new Letter("a", "a");
-console.log(getLetter.guessConfirm("a"));
+getWord.userGuess("g");
+var getLetter = new Letter("b", "b");
+console.log(getLetter.guessConfirm("b"));
 
 // this.word = word;
 //The code below makes the word produced by the index file into individual letters by splitting them and putting them into an array. ".Join" puts spaces between the letters.
